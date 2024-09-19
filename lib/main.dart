@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
-void main() => runApp(const MaterialApp(home: Home()));
+void main() => runApp(const MaterialApp(
+    debugShowCheckedModeBanner:false,
+    home: Home()));
 
 final TextEditingController username = TextEditingController();
 final TextEditingController password = TextEditingController();

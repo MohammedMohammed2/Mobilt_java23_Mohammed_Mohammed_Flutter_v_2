@@ -3,9 +3,25 @@ import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
-void main() => runApp(const MaterialApp(
-    debugShowCheckedModeBanner:false,
-    home: Home()));
+
+void main() {
+  runApp(const MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (context) => const Home(),
+        '/secondPage': (context) => const SecondRoute()
+      },
+    );
+  }
+}
+
 
 final TextEditingController username = TextEditingController();
 final TextEditingController password = TextEditingController();
@@ -73,10 +89,7 @@ class Home_State extends State<Home> {
 
   void functionLogIn() {
     if (username.text.trim() != "" && password.text.trim() != "") {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const SecondRoute()),
-      );
+      Navigator.pushNamed(context, '/secondPage');
     } else {
       Fluttertoast.showToast(
           msg: "please fill in your credentials ",
